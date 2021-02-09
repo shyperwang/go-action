@@ -23,9 +23,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
        
+      - name: ddddd
+        run: |
+          echo "DEPLOYMENT_STATUS=skipped" >> $GITHUB_ENV
+      
       - name: Define variables
         run: |
-          echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" >> $GITHUB_ENV
           echo ::set-env name=PROJECT::$(echo "golang-github-action")
           echo ::set-env name=VERSION::$(git describe --tags)
           echo ::set-env name=COMMIT::$(git rev-parse HEAD)
